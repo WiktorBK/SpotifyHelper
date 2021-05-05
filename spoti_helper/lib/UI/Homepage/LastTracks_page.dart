@@ -1,9 +1,8 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Icons/my_flutter_app_icons.dart';
 import 'package:spoti_helper/Models/ListElement.dart';
 import 'package:spoti_helper/Models/global.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class LastTracksPage extends StatefulWidget {
   @override
@@ -15,7 +14,6 @@ class _LastTracksPageState extends State<LastTracksPage> {
   double fontSize1 = 0.0;
   double fontSize2 = 0.0;
   double fontSize3 = 0.0;
-  int index_ = 0;
   FixedExtentScrollController _scrollController =
       FixedExtentScrollController(initialItem: -1);
   Widget build(BuildContext context) {
@@ -31,8 +29,9 @@ class _LastTracksPageState extends State<LastTracksPage> {
             children: [
               Expanded(
                 child: ListWheelScrollView(
-                  squeeze: 1.2,
-                  perspective: 0.0015,
+                  squeeze: 1.5,
+                  diameterRatio: 1.5,
+                  perspective: 0.002,
                   onSelectedItemChanged: (x) {
                     setState(() {
                       selected = x;
@@ -57,8 +56,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                         ? MediaQuery.of(context).size.height *
                                             0.18
                                         : MediaQuery.of(context).size.height *
-                                            0.17,
-                                    alignment: Alignment.center,
+                                            0.13,
                                     decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadow(
@@ -82,7 +80,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                               x == selected
                                                   ? trackGradient3
                                                   : trackGradient3
-                                                      .withOpacity(0.7)
+                                                      .withOpacity(0.7),
                                             ],
                                             begin: Alignment.topLeft,
                                             end: Alignment.bottomRight),
@@ -106,8 +104,21 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                                       ? Colors.white
                                                       : Colors.white
                                                           .withOpacity(0.4),
-                                                  fontSize:
-                                                      x == selected ? 20 : 15)),
+                                                  fontSize: titles[x].length <
+                                                              15 &&
+                                                          x == selected
+                                                      ? 20
+                                                      : x == selected &&
+                                                              titles[x]
+                                                                      .length >=
+                                                                  15
+                                                          ? 17
+                                                          : x != selected &&
+                                                                  titles[x]
+                                                                          .length <
+                                                                      15
+                                                              ? 15
+                                                              : 14)),
                                           new Text(artists[x],
                                               style: TextStyle(
                                                   color: x == selected
@@ -129,44 +140,41 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                               margin:
                                                   const EdgeInsets.symmetric(
                                                       vertical: 7.0)),
-                                          new AnimatedContainer(
-                                              duration:
-                                                  Duration(milliseconds: 350),
+                                          new Container(
                                               height: x == selected ? 10 : 5),
                                           new Row(
                                             children: <Widget>[
-                                              new Icon(
-                                                  Icons.watch_later_outlined,
-                                                  size: x == selected ? 13 : 10,
-                                                  color: x == selected
-                                                      ? Colors.white
-                                                      : Colors.white
-                                                          .withOpacity(0.4)),
-                                              new Text(time[x],
-                                                  style: TextStyle(
-                                                      color: x == selected
-                                                          ? Colors.white
-                                                              .withOpacity(0.7)
-                                                          : Colors.white
-                                                              .withOpacity(0.3),
-                                                      fontSize: x == selected
-                                                          ? 15
-                                                          : 10)),
-                                              new AnimatedContainer(
-                                                  duration: Duration(
-                                                      milliseconds: 350),
+                                              new AnimatedDefaultTextStyle(
+                                                duration:
+                                                    Duration(milliseconds: 350),
+                                                style: TextStyle(
+                                                    color: x == selected
+                                                        ? Colors.white
+                                                            .withOpacity(0.7)
+                                                        : Colors.white
+                                                            .withOpacity(0),
+                                                    fontSize:
+                                                        x == selected ? 15 : 0),
+                                                child: new Text(
+                                                  time[x],
+                                                ),
+                                              ),
+                                              new Container(
                                                   width:
                                                       x == selected ? 55 : 40),
-                                              new Text(views[x],
-                                                  style: TextStyle(
-                                                      color: x == selected
-                                                          ? Colors.white
-                                                              .withOpacity(0.7)
-                                                          : Colors.white
-                                                              .withOpacity(0.3),
-                                                      fontSize: x == selected
-                                                          ? 15
-                                                          : 10)),
+                                              AnimatedDefaultTextStyle(
+                                                duration:
+                                                    Duration(milliseconds: 350),
+                                                style: TextStyle(
+                                                    color: x == selected
+                                                        ? Colors.white
+                                                            .withOpacity(0.7)
+                                                        : Colors.white
+                                                            .withOpacity(0),
+                                                    fontSize:
+                                                        x == selected ? 15 : 0),
+                                                child: new Text(views[x]),
+                                              ),
                                             ],
                                           )
                                         ],
