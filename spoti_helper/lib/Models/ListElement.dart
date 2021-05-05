@@ -3,14 +3,12 @@ import 'package:spoti_helper/Models/global.dart';
 import 'package:spoti_helper/UI/Homepage/LastTracks_page.dart';
 import 'package:spoti_helper/icons/my_flutter_app_icons.dart';
 
-
 class ListElement extends StatefulWidget {
   @override
   _ListElementState createState() => _ListElementState();
 }
 
 class _ListElementState extends State<ListElement> {
-
   @override
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
