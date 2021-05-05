@@ -60,8 +60,8 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                     decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
+                                              color: Colors.black
+                                                  .withOpacity(0.32),
                                               spreadRadius: 3,
                                               blurRadius:
                                                   x == selected ? 6 : 10,
