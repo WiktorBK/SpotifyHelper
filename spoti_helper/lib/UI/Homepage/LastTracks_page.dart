@@ -137,7 +137,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                             children: <Widget>[
                                               new Icon(
                                                   Icons.watch_later_outlined,
-                                                  size: x == selected ? 13 : 10,
+                                                  size: x == selected ? 13 : 9,
                                                   color: x == selected
                                                       ? Colors.white
                                                       : Colors.white
