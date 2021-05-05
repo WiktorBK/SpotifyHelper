@@ -130,7 +130,7 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                     onPressed: () {
                     
                     },
-                    child: Text("Create", style: TextStyle(color: Colors.black))
+                    child: Text("Create playlist", style: TextStyle(color: Colors.black))
                 )
               ]
               )
