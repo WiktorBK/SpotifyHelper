@@ -13,6 +13,11 @@ TextStyle titleStyle = new TextStyle(
     fontWeight: FontWeight.bold,
     color: darkGrey,
     fontSize: 40);
+TextStyle bottomText = new TextStyle(
+  fontFamily: 'Avenir',
+    fontWeight: FontWeight.bold,
+    color: darkGrey,
+    fontSize: 18);
 
 BoxShadow shadow = new BoxShadow(
   color: Colors.black.withOpacity(0.5),
