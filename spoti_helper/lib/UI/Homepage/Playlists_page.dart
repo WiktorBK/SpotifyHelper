@@ -19,8 +19,8 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [gradient1, gradient2],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft)),
         child: Stack(children: <Widget>[
           Container(
               height: 600,
