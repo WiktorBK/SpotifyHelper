@@ -1,5 +1,8 @@
 import os
 from spotify_client import SpotifyClient
+from flask import Flask
+
+app = Flask(__name__)
 
 
 def main():
@@ -10,10 +13,18 @@ def main():
     last_played_tracks = spotifyClient.get_last_played_tracks(
         num_tracks_to_visualise)
 
-    print(f"Here are the last 20 tracks you listened to on Spotify:")
     for index, track in enumerate(last_played_tracks):
-        print(f"{index+1}- {track}")
+        print(track)
 
 
 if __name__ == '__main__':
     main()
+
+
+@app.route('/')
+def home():
+    return list
+
+
+if __name__ == ("__main__"):
+    app.run(debug=True)
