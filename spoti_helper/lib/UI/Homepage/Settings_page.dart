@@ -7,6 +7,14 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+
+  bool _nightmode = false;
+  bool _sendpush = false;
+
+  bool _pinned = true;
+  bool _snap = false;
+  bool _floating = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,39 +24,30 @@ class _SettingsPageState extends State<SettingsPage> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight)),
         child: Stack(children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(
-                top: 70, left: MediaQuery.of(context).size.width * 0.5 - 60),
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://png.pngtree.com/png-vector/20190909/ourmid/pngtree-outline-user-icon-png-image_1727916.jpg')),
-              borderRadius: BorderRadius.all(Radius.circular(100.0)),
-              color: Colors.redAccent,
-            ),
+          CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+            pinned: _pinned,
+            snap: _snap,
+            floating: _floating,
+            expandedHeight: 160.0,
+            flexibleSpace: const FlexibleSpaceBar(    
+                ),
+                title: Text('User')
+              )
+            ],
           ),
-          Container(
-            height: 420,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Travis Scott',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SingleChildScrollView(
+
+
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return SingleChildScrollView(
             padding: EdgeInsets.only(top: 250.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -61,16 +60,23 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     )),
                 const SizedBox(height: 10.0),
+                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0)),
                   child: Column(children: <Widget>[
-                    ListTile(
-                      leading: Icon(Icons.nights_stay_outlined),
-                      title: Text("Night mode"),
-                      onTap: () {},
+                    SwitchListTile(
+                      title: const Text('Night mode'),
+                      value: _nightmode,
+                      onChanged: (bool value) {
+                        setState(() {
+                          _nightmode = value;
+                        });
+                      },
+                      secondary: const Icon(Icons.nights_stay_outlined),
+                      activeColor: Colors.purple[300]
                     ),
                     _buildDivider(),
                     ListTile(
@@ -88,6 +94,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
+                
+                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -99,26 +107,35 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: bottomText,
                     ))),
                 const SizedBox(height: 10.0),
+                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0)),
                   child: Column(children: <Widget>[
-                    ListTile(
-                      leading: Icon(Icons.notification_important_outlined),
-                      title: Text("Send push"),
-                      onTap: () {},
+                    SwitchListTile(
+                      title: const Text('Send push'),
+                      value: _sendpush,
+                      onChanged: (bool value) {
+                        setState(() {
+                          _sendpush = value;
+                        });
+                      },
+                      secondary: const Icon(Icons.publish_outlined),
+                      activeColor: Colors.purple[300]
                     ),
                     _buildDivider(),
                     ListTile(
-                      leading: Icon(Icons.format_list_numbered_outlined),
+                      leading: Icon(Icons.notifications_active_outlined),
                       title: Text("Alert mode"),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {},
                     ),
                   ]),
                 ),
+                
+                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -130,6 +147,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: bottomText,
                     ))),
                 const SizedBox(height: 10.0),
+                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -165,8 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ]),
                 ),
               ],
-            ),
-          )
+            ))});
         ]));
   }
 

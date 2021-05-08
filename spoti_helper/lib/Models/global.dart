@@ -18,6 +18,12 @@ TextStyle bottomText = new TextStyle(
     fontWeight: FontWeight.bold,
     color: darkGrey,
     fontSize: 18);
+TextStyle username = new TextStyle(
+  fontFamily: 'Avenir',
+  fontWeight: FontWeight.bold,
+  color: Colors.white,
+  fontSize: 28);
+
 
 BoxShadow shadow = new BoxShadow(
   color: Colors.black.withOpacity(0.5),
