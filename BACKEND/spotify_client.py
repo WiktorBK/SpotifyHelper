@@ -19,6 +19,6 @@ class SpotifyClient():
 
         response_json = response.json()
 
-        tracks = [Track(track['track']['name'], track['track']['id'], track['track']['artists'][0]['name'], track['track']['duration_ms'], track['track']['album']['images'][0]['url']) for
+        tracks = [Track(track['track']['name'], track['track']['id'], track['track']['artists'][0]['name'], track['track']['duration_ms'], track['track']['album']['images'][1]['url']) for
                   track in response_json['items']]
         return tracks
