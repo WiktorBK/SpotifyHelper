@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:spoti_helper/Icons/my_flutter_app_icons.dart';
 import 'package:spoti_helper/Models/ListElement.dart';
 import 'package:spoti_helper/Models/global.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class LastTracksPage extends StatefulWidget {
   @override
@@ -14,8 +16,10 @@ class _LastTracksPageState extends State<LastTracksPage> {
   double fontSize1 = 0.0;
   double fontSize2 = 0.0;
   double fontSize3 = 0.0;
+
   FixedExtentScrollController _scrollController =
       FixedExtentScrollController(initialItem: -1);
+  @override
   Widget build(BuildContext context) {
     double itemWidth = MediaQuery.of(context).size.height * 0.20;
     return Container(

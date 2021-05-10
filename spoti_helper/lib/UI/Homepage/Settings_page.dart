@@ -182,9 +182,17 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
+
               ],
-            ))});
-        ]));
+            ),
+              );
+        ]
+            )
+            
+
+
+  
+
   }
 
   Container _buildDivider() {

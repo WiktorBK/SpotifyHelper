@@ -1,20 +1,23 @@
 import os
 from spotify_client import SpotifyClient
 from flask import Flask
+from flask import jsonify
 
 app = Flask(__name__)
 
 
 def main():
+    global spotifyClient
     spotifyClient = SpotifyClient(os.getenv("SPOTIFY_AUTH_TOKEN"),
                                   os.getenv('SPOTIFY_USER_ID'))
-
-    num_tracks_to_visualise = 20
-    last_played_tracks = spotifyClient.get_last_played_tracks(
-        num_tracks_to_visualise)
-
-    for index, track in enumerate(last_played_tracks):
-        print(track)
+    global artists
+    global titles
+    global times
+    global images
+    artists = spotifyClient.get_artists()
+    titles = spotifyClient.get_titles()
+    times = spotifyClient.get_times()
+    images = spotifyClient.get_images()
 
 
 if __name__ == '__main__':
@@ -23,7 +26,17 @@ if __name__ == '__main__':
 
 @app.route('/')
 def home():
-    return 'home'
+    return "/artists -- show artists, /titles -- show titles"
+
+
+@app.route('/artists')
+def artist():
+    return jsonify(artists)
+
+
+@app.route('/titles')
+def title():
+    return jsonify(titles)
 
 
 if __name__ == ("__main__"):

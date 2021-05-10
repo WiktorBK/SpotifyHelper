@@ -1,5 +1,4 @@
 import requests
-from track import Track
 
 
 class SpotifyClient():
@@ -7,8 +6,9 @@ class SpotifyClient():
         self.auth_token = auth_token
         self.user_id = user_id
 
-    def get_last_played_tracks(self, limit=20):
+    def get_last_played_tracks(self):
         url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
+        global response
         response = requests.get(
             url,
             headers={
@@ -17,8 +17,79 @@ class SpotifyClient():
             }
         )
 
+    def get_titles(self):
+        url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
+        global response
+        response = requests.get(
+            url,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.auth_token}"
+            }
+        )
         response_json = response.json()
 
-        tracks = [Track(track['track']['name'], track['track']['id'], track['track']['artists'][0]['name'], track['track']['duration_ms'], track['track']['album']['images'][1]['url']) for
-                  track in response_json['items']]
-        return tracks
+        titles_list = []
+        for track in response_json['items']:
+            titles_list.append(track['track']['name'])
+
+        return titles_list
+
+    def get_artists(self):
+        url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
+        global response
+        response = requests.get(
+            url,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.auth_token}"
+            }
+        )
+        response_json = response.json()
+
+        artists_list = []
+        for track in response_json['items']:
+            artists_list.append(track['track']['artists'][0]['name'])
+
+        return artists_list
+
+    def get_times(self):
+        url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
+        global response
+        response = requests.get(
+            url,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.auth_token}"
+            }
+        )
+        response_json = response.json()
+
+        times_list = []
+        for track in response_json['items']:
+            seconds, track['track']['duration_ms'] = divmod(
+                track['track']['duration_ms'], 1000)
+            minutes, seconds = divmod(seconds, 60)
+            duration = f'{int(minutes):01d}:{int(seconds):02d}'
+
+            times_list.append(duration)
+
+        return times_list
+
+    def get_images(self):
+        url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
+        global response
+        response = requests.get(
+            url,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.auth_token}"
+            }
+        )
+        response_json = response.json()
+
+        images_list = []
+        for track in response_json['items']:
+            images_list.append(track['track']['album']['images'][1]['url'])
+
+        return images_list
