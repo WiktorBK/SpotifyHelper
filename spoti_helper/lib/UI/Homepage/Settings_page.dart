@@ -1,5 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Models/global.dart';
+import 'package:spoti_helper/icons/my_flutter_app_icons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -24,29 +27,34 @@ class _SettingsPageState extends State<SettingsPage> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight)),
         child: Stack(children: <Widget>[
-          CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-            pinned: _pinned,
-            snap: _snap,
-            floating: _floating,
-            expandedHeight: 160.0,
-            flexibleSpace: const FlexibleSpaceBar(    
-                ),
-                title: Text('User')
-              )
-            ],
-          ),
 
 
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return SingleChildScrollView(
+          SingleChildScrollView(
             padding: EdgeInsets.only(top: 250.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                
+                Container(
+                  height: 100,
+                  child: Card(
+                    color: Colors.grey[300],
+                      elevation: 8.0,
+                      margin: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 8.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0)),
+                      child: ListTile(
+                      leading: CircleAvatar(
+                      backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/985879643621347334/9xfE5pY5_400x400.jpg"), 
+                      ),
+                      trailing: Icon(Icons.edit),
+                        title: Text(
+                          "Sergiusz Śmierdzipała",
+                          style: bottomText,
+                        ),
+                      )),
+                ),
+                const SizedBox(height: 20.0),
                 
                 Card(
                     elevation: 8.0,
@@ -182,17 +190,37 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
-
               ],
             ),
-              );
-        ]
-            )
-            
-
-
-  
-
+          ),
+           Container(
+            padding: EdgeInsets.only(bottom: 50),
+            height: 160,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(50),
+              ),
+              color: Colors.white,
+            ),
+            child: Center(
+              child: Text(
+                'Your Dashboard',
+                style: titleStyle,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+                top: 130, left: MediaQuery.of(context).size.width * 0.5 - 25),
+            child: FloatingActionButton(
+              child:
+                  Icon(Icons.account_circle_outlined, color: Colors.black, size: 40),
+              backgroundColor: Colors.white,
+              onPressed: () {},
+            ),
+          ),
+        ]));
   }
 
   Container _buildDivider() {
