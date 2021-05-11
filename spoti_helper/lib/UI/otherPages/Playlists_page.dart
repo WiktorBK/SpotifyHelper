@@ -10,6 +10,7 @@ class PlaylistsPage extends StatefulWidget {
 class _PlaylistsPageState extends State<PlaylistsPage> {
   double itemWidth = 150.0;
   double notSelectedItemWidth = 50;
+  double selectedItemHeight = 160;
   int itemCount = 10;
   int selected = 5;
   FixedExtentScrollController _scrollController =
@@ -40,13 +41,15 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                     children: List.generate(
                         itemCount,
                         (x) => RotatedBox(
-                            quarterTurns: 1,
-                            child: AnimatedContainer(
+                              quarterTurns: 1,
+                              child: AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
                                 width: x == selected
                                     ? itemWidth
                                     : notSelectedItemWidth,
-                                height: x == selected ? itemWidth : itemWidth,
+                                height: x == selected
+                                    ? selectedItemHeight
+                                    : itemWidth,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     boxShadow: [
@@ -70,7 +73,8 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                                     ]),
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(18)),
-                                child: Text("")))),
+                              ),
+                            )),
                     itemExtent: itemWidth,
                   ))),
           Container(
