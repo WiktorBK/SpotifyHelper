@@ -6,17 +6,6 @@ class SpotifyClient():
         self.auth_token = auth_token
         self.user_id = user_id
 
-    def get_last_played_tracks(self):
-        url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
-        global response
-        response = requests.get(
-            url,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.auth_token}"
-            }
-        )
-
     def get_titles(self):
         url = f"https://api.spotify.com/v1/me/player/recently-played?limit=20"
         global response

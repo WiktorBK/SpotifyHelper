@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Models/global.dart';
 import 'package:spoti_helper/icons/my_flutter_app_icons.dart';
@@ -10,7 +9,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
   bool _nightmode = false;
   bool _sendpush = false;
 
@@ -27,27 +25,25 @@ class _SettingsPageState extends State<SettingsPage> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight)),
         child: Stack(children: <Widget>[
-
-
           SingleChildScrollView(
             padding: EdgeInsets.only(top: 250.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                
                 Container(
                   height: 100,
                   child: Card(
-                    color: Colors.grey[300],
+                      color: Colors.grey[300],
                       elevation: 8.0,
                       margin: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 8.0),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0)),
                       child: ListTile(
-                      leading: CircleAvatar(
-                      backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/985879643621347334/9xfE5pY5_400x400.jpg"), 
-                      ),
-                      trailing: Icon(Icons.edit),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "https://pbs.twimg.com/profile_images/985879643621347334/9xfE5pY5_400x400.jpg"),
+                        ),
+                        trailing: Icon(Icons.edit),
                         title: Text(
                           "Sergiusz Śmierdzipała",
                           style: bottomText,
@@ -55,7 +51,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       )),
                 ),
                 const SizedBox(height: 20.0),
-                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -68,7 +63,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     )),
                 const SizedBox(height: 10.0),
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -76,16 +70,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.circular(18.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      title: const Text('Night mode'),
-                      value: _nightmode,
-                      onChanged: (bool value) {
-                        setState(() {
-                          _nightmode = value;
-                        });
-                      },
-                      secondary: const Icon(Icons.nights_stay_outlined),
-                      activeColor: Colors.purple[300]
-                    ),
+                        title: const Text('Night mode'),
+                        value: _nightmode,
+                        onChanged: (bool value) {
+                          setState(() {
+                            _nightmode = value;
+                          });
+                        },
+                        secondary: const Icon(Icons.nights_stay_outlined),
+                        activeColor: Colors.purple[300]),
                     _buildDivider(),
                     ListTile(
                       leading: Icon(Icons.format_list_numbered_outlined),
@@ -102,8 +95,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
-                
-                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -115,7 +106,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: bottomText,
                     ))),
                 const SizedBox(height: 10.0),
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -123,16 +113,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.circular(18.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      title: const Text('Send push'),
-                      value: _sendpush,
-                      onChanged: (bool value) {
-                        setState(() {
-                          _sendpush = value;
-                        });
-                      },
-                      secondary: const Icon(Icons.publish_outlined),
-                      activeColor: Colors.purple[300]
-                    ),
+                        title: const Text('Send push'),
+                        value: _sendpush,
+                        onChanged: (bool value) {
+                          setState(() {
+                            _sendpush = value;
+                          });
+                        },
+                        secondary: const Icon(Icons.publish_outlined),
+                        activeColor: Colors.purple[300]),
                     _buildDivider(),
                     ListTile(
                       leading: Icon(Icons.notifications_active_outlined),
@@ -142,8 +131,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
-                
-                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -155,7 +142,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: bottomText,
                     ))),
                 const SizedBox(height: 10.0),
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -193,7 +179,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-           Container(
+          Container(
             padding: EdgeInsets.only(bottom: 50),
             height: 160,
             decoration: BoxDecoration(
@@ -214,8 +200,8 @@ class _SettingsPageState extends State<SettingsPage> {
             margin: EdgeInsets.only(
                 top: 130, left: MediaQuery.of(context).size.width * 0.5 - 25),
             child: FloatingActionButton(
-              child:
-                  Icon(Icons.account_circle_outlined, color: Colors.black, size: 40),
+              child: Icon(Icons.account_circle_outlined,
+                  color: Colors.black, size: 40),
               backgroundColor: Colors.white,
               onPressed: () {},
             ),

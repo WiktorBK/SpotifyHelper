@@ -1,6 +1,6 @@
 import os
 from spotify_client import SpotifyClient
-from flask import Flask
+from flask import Flask, json
 from flask import jsonify
 
 app = Flask(__name__)
@@ -18,6 +18,18 @@ def main():
     titles = spotifyClient.get_titles()
     times = spotifyClient.get_times()
     images = spotifyClient.get_images()
+    global data
+    data = {}
+    n = 0
+    data['track'] = []
+    for word in titles:
+        data['track'].append({
+            'Artist': f'{artists[n]}',
+            'Title': f'{titles[n]}',
+            'Duration': f'{times[n]}',
+            'Image': f'{images[n]}'
+        })
+        n += 1
 
 
 if __name__ == '__main__':
@@ -26,17 +38,7 @@ if __name__ == '__main__':
 
 @app.route('/')
 def home():
-    return "/artists -- show artists, /titles -- show titles"
-
-
-@app.route('/artists')
-def artist():
-    return jsonify(artists)
-
-
-@app.route('/titles')
-def title():
-    return jsonify(titles)
+    return jsonify(data)
 
 
 if __name__ == ("__main__"):

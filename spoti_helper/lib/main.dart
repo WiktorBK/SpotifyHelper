@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spoti_helper/UI/Homepage/Playlists_page.dart';
-import 'package:spoti_helper/UI/Homepage/Settings_page.dart';
+import 'package:spoti_helper/UI/otherPages/Playlists_page.dart';
+import 'package:spoti_helper/UI/otherPages/Settings_page.dart';
 import 'Models/global.dart';
 import 'UI/Homepage/LastTracks_page.dart';
 
