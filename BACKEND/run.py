@@ -31,7 +31,6 @@ def main():
         })
         n += 1
 
-
 if __name__ == '__main__':
     main()
 
@@ -39,6 +38,10 @@ if __name__ == '__main__':
 @app.route('/')
 def home():
     return jsonify(data)
+
+@app.roiute("/playlists")
+def home():
+    return jsonify(playlistslist)
 
 
 if __name__ == ("__main__"):
