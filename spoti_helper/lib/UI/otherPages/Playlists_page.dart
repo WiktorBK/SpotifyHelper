@@ -10,6 +10,7 @@ class PlaylistsPage extends StatefulWidget {
 class _PlaylistsPageState extends State<PlaylistsPage> {
   double itemWidth = 150.0;
   double notSelectedItemWidth = 50;
+  double selectedItemHeight = 160;
   int itemCount = 10;
   int selected = 5;
   FixedExtentScrollController _scrollController =
@@ -45,7 +46,7 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                             child: AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
                                 width: x == selected ? itemWidth : notSelectedItemWidth,
-                                height: x == selected ? itemWidth : itemWidth,
+                                height: x == selected ? selectedItemHeight : itemWidth,
                             alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         boxShadow: [
@@ -60,9 +61,10 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                                                   : Offset(0,
                                                       2) // changes position of shadow
                                               ),
-                                    ],
-                                     gradient: LinearGradient(
-                                            colors: [
+                                              
+                                              ],
+                                              gradient: LinearGradient(
+                                              colors: [
                                               x == selected
                                                   ? trackGradient1
                                                   : trackGradient1
@@ -71,12 +73,16 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                                                   ? trackGradient3
                                                   : trackGradient3
                                                       .withOpacity(0.7),
-                                            ]),
+                                          ]),
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(18)),
-                                child: Text("")))),
-                    itemExtent: itemWidth,
-                  ))),
+                                ),
+                              )
+                            ),
+                          itemExtent: itemWidth, 
+                        )
+                      )
+                    ),
           Container(
             padding: EdgeInsets.only(bottom: 50),
             height: 160,
