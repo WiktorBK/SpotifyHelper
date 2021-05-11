@@ -2,7 +2,7 @@ import requests
 
 
 class SpotifyClient():
-    def __init__(self, auth_token, user_id):
+    def __init__(self, auth_token, user_id, playlists):
         self.auth_token = auth_token
         self.user_id = user_id
         self.playlists = playlists
@@ -85,7 +85,7 @@ class SpotifyClient():
         return images_list
 
 
-    def list_of_current_user_playlists(self):
+    def get_list_of_current_user_playlists(self):
         url = f"https://api.spotify.com/v1/me/playlists?limit=10"
         global response
         response = requests.get(
@@ -96,3 +96,4 @@ class SpotifyClient():
             }
         )
         response_json = response.json()
+

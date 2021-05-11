@@ -8,11 +8,12 @@ class PlaylistsPage extends StatefulWidget {
 }
 
 class _PlaylistsPageState extends State<PlaylistsPage> {
-  double itemWidth = 60.0;
-  int itemCount = 100;
-  int selected = 50;
+  double itemWidth = 150.0;
+  double notSelectedItemWidth = 50;
+  int itemCount = 10;
+  int selected = 5;
   FixedExtentScrollController _scrollController =
-      FixedExtentScrollController(initialItem: 50);
+      FixedExtentScrollController(initialItem: 5);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,31 +36,45 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                       print(selected);
                     },
                     controller: _scrollController,
+                    physics: FixedExtentScrollPhysics(),
                     children: List.generate(
                         itemCount,
+                        
                         (x) => RotatedBox(
                             quarterTurns: 1,
                             child: AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
-                                width: x == selected ? 100 : 80,
-                                height: x == selected ? 100 : 80,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: x == selected
-                                        ? Colors.white
-                                        : Colors.white30,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 1,
-                                        blurRadius: 3,
-                                        offset: Offset(
-                                            0, 3), // changes position of shadow
-                                      ),
+                                width: x == selected ? itemWidth : notSelectedItemWidth,
+                                height: x == selected ? itemWidth : itemWidth,
+                            alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.black
+                                                  .withOpacity(0.32),
+                                              spreadRadius: 3,
+                                              blurRadius:
+                                                  x == selected ? 6 : 10,
+                                              offset: x == selected
+                                                  ? Offset(0, 4)
+                                                  : Offset(0,
+                                                      2) // changes position of shadow
+                                              ),
                                     ],
+                                     gradient: LinearGradient(
+                                            colors: [
+                                              x == selected
+                                                  ? trackGradient1
+                                                  : trackGradient1
+                                                      .withOpacity(0.7),
+                                              x == selected
+                                                  ? trackGradient3
+                                                  : trackGradient3
+                                                      .withOpacity(0.7),
+                                            ]),
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(18)),
-                                child: Text("dupa")))),
+                                child: Text("")))),
                     itemExtent: itemWidth,
                   ))),
           Container(
@@ -132,7 +147,7 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                         splashColor: Colors.grey[200],
                         color: Colors.white,
                         onPressed: () {},
-                        child: Text("Create playlist",
+                        child: Text("Create",
                             style: TextStyle(color: Colors.black)))
                   ]))
         ]));
