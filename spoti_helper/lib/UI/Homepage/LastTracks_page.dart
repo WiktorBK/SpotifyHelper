@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Icons/my_flutter_app_icons.dart';
-import 'package:spoti_helper/Models/ListElement.dart';
 import 'package:spoti_helper/Models/global.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -51,16 +50,8 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                 Center(
                                   child: AnimatedContainer(
                                     duration: Duration(milliseconds: 350),
-                                    width: x == selected
-                                        ? MediaQuery.of(context).size.width *
-                                            0.80
-                                        : MediaQuery.of(context).size.width *
-                                            0.70,
-                                    height: x == selected
-                                        ? MediaQuery.of(context).size.height *
-                                            0.18
-                                        : MediaQuery.of(context).size.height *
-                                            0.13,
+                                    width: x == selected ? 280 : 240,
+                                    height: x == selected ? 110 : 80,
                                     decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadow(
@@ -96,7 +87,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                       duration: Duration(milliseconds: 350),
                                       margin: EdgeInsets.only(
                                           top: x == selected ? 17.0 : 18,
-                                          left: x == selected ? 72.0 : 70),
+                                          left: x == selected ? 74.0 : 40),
                                       constraints: new BoxConstraints.expand(),
                                       child: new Column(
                                         crossAxisAlignment:
@@ -187,22 +178,17 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                   ),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
-                                  alignment: new FractionalOffset(0.0, 0.5),
+                                  height: 70,
+                                  width: 70,
                                   margin: EdgeInsets.only(
-                                      left: x == selected
-                                          ? itemWidth * 0.12
-                                          : itemWidth * 0.45),
-                                  child: new Hero(
-                                    tag: 'planet-icon-${32432}',
-                                    child: new Icon(
-                                      Icons.photo,
-                                      size: x == selected ? 80 : 60,
-                                      color: x == selected
-                                          ? Colors.black
-                                          : Colors.black.withOpacity(0.4),
-                                    ),
-                                  ),
+                                      left: x == selected ? 10 : 35, top: 20),
+                                  decoration: new BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: new DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: new NetworkImage(
+                                              "https://i.imgur.com/BoN9kdC.png"))),
+                                  duration: Duration(milliseconds: 350),
                                 ),
                               ],
                             ),
@@ -213,7 +199,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
             ],
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 50),
+            padding: EdgeInsets.only(bottom: 30),
             height: 160,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
