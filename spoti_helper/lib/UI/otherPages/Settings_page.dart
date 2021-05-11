@@ -30,29 +30,25 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                
-                
                 Card(
-                      color: Colors.white,
-                      elevation: 8.0,
-                      margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0)),
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://pbs.twimg.com/profile_images/985879643621347334/9xfE5pY5_400x400.jpg"),
-                        ),
-                        trailing: Icon(Icons.edit),
-                        onTap: () {},
-                        title: Text(
-                          "Sergiusz Śmierdzipała",
-                          style: bottomText,
-                        ),
-                      )),
+                    color: Colors.white,
+                    elevation: 8.0,
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0)),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://pbs.twimg.com/profile_images/985879643621347334/9xfE5pY5_400x400.jpg"),
+                      ),
+                      trailing: Icon(Icons.edit),
+                      onTap: () {},
+                      title: Text(
+                        "Sergiusz Śmierdzipała",
+                        style: bottomText,
+                      ),
+                    )),
                 const SizedBox(height: 20.0),
-                
-                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -66,7 +62,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     )),
                 const SizedBox(height: 10.0),
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -99,21 +94,18 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ]),
                 ),
-                
-                
                 Card(
                     elevation: 8.0,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     child: ListTile(
-                      leading: Icon(Icons.notifications_active_outlined),
+                        leading: Icon(Icons.notifications_active_outlined),
                         title: Text(
-                      "Notifications",
-                      style: bottomText,
-                    ))),
+                          "Notifications",
+                          style: bottomText,
+                        ))),
                 const SizedBox(height: 10.0),
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -138,14 +130,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     child: ListTile(
-                      leading: Icon(Icons.lightbulb_outline_sharp),
+                        leading: Icon(Icons.lightbulb_outline_sharp),
                         title: Text(
-                      "Other",
-                      style: bottomText,
-                    ))),
+                          "Other",
+                          style: bottomText,
+                        ))),
                 const SizedBox(height: 10.0),
-                
-                
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
@@ -183,7 +173,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-          
           Container(
             padding: EdgeInsets.only(bottom: 50),
             height: 160,
@@ -201,7 +190,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-          
           Container(
             margin: EdgeInsets.only(
                 top: 130, left: MediaQuery.of(context).size.width * 0.5 - 25),

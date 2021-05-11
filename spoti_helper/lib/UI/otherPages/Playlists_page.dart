@@ -39,39 +39,35 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                     physics: FixedExtentScrollPhysics(),
                     children: List.generate(
                         itemCount,
-                        
                         (x) => RotatedBox(
                             quarterTurns: 1,
                             child: AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
-                                width: x == selected ? itemWidth : notSelectedItemWidth,
+                                width: x == selected
+                                    ? itemWidth
+                                    : notSelectedItemWidth,
                                 height: x == selected ? itemWidth : itemWidth,
-                            alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.black
-                                                  .withOpacity(0.32),
-                                              spreadRadius: 3,
-                                              blurRadius:
-                                                  x == selected ? 6 : 10,
-                                              offset: x == selected
-                                                  ? Offset(0, 4)
-                                                  : Offset(0,
-                                                      2) // changes position of shadow
-                                              ),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.32),
+                                          spreadRadius: 3,
+                                          blurRadius: x == selected ? 6 : 10,
+                                          offset: x == selected
+                                              ? Offset(0, 4)
+                                              : Offset(0,
+                                                  2) // changes position of shadow
+                                          ),
                                     ],
-                                     gradient: LinearGradient(
-                                            colors: [
-                                              x == selected
-                                                  ? trackGradient1
-                                                  : trackGradient1
-                                                      .withOpacity(0.7),
-                                              x == selected
-                                                  ? trackGradient3
-                                                  : trackGradient3
-                                                      .withOpacity(0.7),
-                                            ]),
+                                    gradient: LinearGradient(colors: [
+                                      x == selected
+                                          ? trackGradient1
+                                          : trackGradient1.withOpacity(0.7),
+                                      x == selected
+                                          ? trackGradient3
+                                          : trackGradient3.withOpacity(0.7),
+                                    ]),
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(18)),
                                 child: Text("")))),
