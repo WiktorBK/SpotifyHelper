@@ -9,17 +9,8 @@ app = Flask(__name__)
 def main():
     global spotifyClient
     spotifyClient = SpotifyClient(os.getenv("SPOTIFY_AUTH_TOKEN"),
-<<<<<<< HEAD
                                   os.getenv('SPOTIFY_USER_ID'))
 
-=======
-                                  os.getenv('SPOTIFY_USER_ID'),
-                                  os.getenv("SPOIFY_USER_PLAYLISTS"))
-    global artists
-    global titles
-    global times
-    global images
->>>>>>> dc50bf44f3b97292c624a84a86be4e31997394a4
     artists = spotifyClient.get_artists()
     titles = spotifyClient.get_titles()
     times = spotifyClient.get_times()
@@ -47,14 +38,11 @@ if __name__ == '__main__':
 def home():
     return jsonify(data)
 
-<<<<<<< HEAD
 
 @app.roiute("/playlists")
 def home():
     return jsonify(playlistslist)
 
-=======
->>>>>>> dc50bf44f3b97292c624a84a86be4e31997394a4
 
 if __name__ == ("__main__"):
     app.run(debug=True)
