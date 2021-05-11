@@ -10,10 +10,7 @@ def main():
     global spotifyClient
     spotifyClient = SpotifyClient(os.getenv("SPOTIFY_AUTH_TOKEN"),
                                   os.getenv('SPOTIFY_USER_ID'))
-    global artists
-    global titles
-    global times
-    global images
+
     artists = spotifyClient.get_artists()
     titles = spotifyClient.get_titles()
     times = spotifyClient.get_times()
@@ -31,6 +28,7 @@ def main():
         })
         n += 1
 
+
 if __name__ == '__main__':
     main()
 
@@ -38,6 +36,7 @@ if __name__ == '__main__':
 @app.route('/')
 def home():
     return jsonify(data)
+
 
 @app.roiute("/playlists")
 def home():
