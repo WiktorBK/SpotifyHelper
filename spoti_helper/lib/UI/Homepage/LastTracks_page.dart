@@ -1,9 +1,6 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Icons/my_flutter_app_icons.dart';
 import 'package:spoti_helper/Models/global.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:audioplayers/audio_cache.dart';
 
 class LastTracksPage extends StatefulWidget {
   @override
@@ -18,6 +15,7 @@ class _LastTracksPageState extends State<LastTracksPage> {
 
   FixedExtentScrollController _scrollController =
       FixedExtentScrollController(initialItem: -1);
+
   @override
   Widget build(BuildContext context) {
     double itemWidth = MediaQuery.of(context).size.height * 0.20;
@@ -178,10 +176,11 @@ class _LastTracksPageState extends State<LastTracksPage> {
                                   ),
                                 ),
                                 AnimatedContainer(
-                                  height: 70,
-                                  width: 70,
+                                  height: x == selected ? 80 : 50,
+                                  width: x == selected ? 80 : 50,
                                   margin: EdgeInsets.only(
-                                      left: x == selected ? 10 : 35, top: 20),
+                                      left: x == selected ? 15 : 40,
+                                      top: x == selected ? 20 : 35),
                                   decoration: new BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: new DecorationImage(

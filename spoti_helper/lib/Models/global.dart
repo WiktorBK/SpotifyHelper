@@ -14,16 +14,15 @@ TextStyle titleStyle = new TextStyle(
     color: darkGrey,
     fontSize: 40);
 TextStyle bottomText = new TextStyle(
-  fontFamily: 'Avenir',
+    fontFamily: 'Avenir',
     fontWeight: FontWeight.bold,
     color: darkGrey,
     fontSize: 18);
 TextStyle username = new TextStyle(
-  fontFamily: 'Avenir',
-  fontWeight: FontWeight.bold,
-  color: Colors.white,
-  fontSize: 28);
-
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    fontSize: 28);
 
 BoxShadow shadow = new BoxShadow(
   color: Colors.black.withOpacity(0.5),
@@ -61,6 +60,7 @@ List views = [
   '34 325 234'
 ];
 List time = ['5:23', '5:01', '2:32', '3:05', '4:13', '3:23', '3:56', '4:05'];
+<<<<<<< HEAD
 
 
 ///////////////////////////////////do playlist
@@ -106,3 +106,5 @@ List trackamount = [
 
 
 
+=======
+>>>>>>> fc35488cb270d579633d213880ba1082bdd380b9

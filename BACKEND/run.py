@@ -15,13 +15,13 @@ def main():
     titles = spotifyClient.get_titles()
     times = spotifyClient.get_times()
     images = spotifyClient.get_images()
-    playlists = spotifyClient.get_list_of_current_user_playlists()
+
     global data
     data = {}
     n = 0
-    data['track'] = []
+    data = []
     for word in titles:
-        data['track'].append({
+        data.append({
             'Artist': f'{artists[n]}',
             'Title': f'{titles[n]}',
             'Duration': f'{times[n]}',
@@ -39,9 +39,9 @@ def home():
     return jsonify(data)
 
 
-@app.roiute("/playlists")
-def home():
-    return jsonify(playlistslist)
+@app.route("/playlists")
+def playlists():
+    return ""
 
 
 if __name__ == ("__main__"):
