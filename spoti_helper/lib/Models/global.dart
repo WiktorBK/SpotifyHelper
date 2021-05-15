@@ -63,6 +63,46 @@ List views = [
 List time = ['5:23', '5:01', '2:32', '3:05', '4:13', '3:23', '3:56', '4:05'];
 
 
+///////////////////////////////////do playlist
+
+List playlists = [
+  "Rap Caviar",
+  "Trap Strefa",
+  "Eska Summer Hits",
+  "Ulubione",
+  "Fresh 2021",
+  "This is Twój Stary",
+  "This is Playboi Carti",
+  "Chujowa muzyka",
+  "Nie mam pomysłu",
+  "Kurwa chuj",
+];
+
+List authors = [
+  "Spotify",
+  "Spotify",
+  "Norbert Wrzos",
+  "Spotify",
+  "Norbert Wrzos",
+  "Twój Stary",
+  "Playboi Carti",
+  "Chuj",
+  "Ktoś",
+  "Pizda",
+];
+
+List trackamount = [
+  "50",
+  "50",
+  "20",
+  "50",
+  "38",
+  "40",
+  "69",
+  "66",
+  "2137",
+];
+
 
 
 
