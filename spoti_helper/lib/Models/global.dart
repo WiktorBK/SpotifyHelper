@@ -8,16 +8,19 @@ Color darkGrey = new Color(0xFF292929);
 Color trackGradient1 = new Color(0xFF0d0d0d);
 Color trackGradient2 = new Color(0xFF1d1d1d);
 Color trackGradient3 = new Color(0xFF260530);
+
 TextStyle titleStyle = new TextStyle(
     fontFamily: 'Avenir',
     fontWeight: FontWeight.bold,
     color: darkGrey,
     fontSize: 40);
+
 TextStyle bottomText = new TextStyle(
     fontFamily: 'Avenir',
     fontWeight: FontWeight.bold,
     color: darkGrey,
     fontSize: 18);
+    
 TextStyle username = new TextStyle(
     fontFamily: 'Avenir',
     fontWeight: FontWeight.bold,
