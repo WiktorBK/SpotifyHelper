@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spoti_helper/Models/global.dart';
 import 'package:spoti_helper/icons/my_flutter_app_icons.dart';
+import 'package:marquee/marquee.dart';
 
 class PlaylistsPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
   double selectedItemHeight = 160;
   int itemCount = 10;
   int selected = 5;
+  bool shrinkWrap = true;
   FixedExtentScrollController _scrollController =
       FixedExtentScrollController(initialItem: 5);
   @override
@@ -29,64 +31,142 @@ class _PlaylistsPageState extends State<PlaylistsPage> {
                 height: 600,
                 child: RotatedBox(
                     quarterTurns: -1,
-                    child: ListWheelScrollView(
-                    magnification: 2.0,
-                    perspective: 0.002,
-                    onSelectedItemChanged: (x) {
-                      setState(() {
-                        selected = x;
-                      });
-                      print(selected);
-                    },
-                    controller: _scrollController,
-                    physics: FixedExtentScrollPhysics(),
-                    children: List.generate(
-                        itemCount,
-                        
-                        (x) => RotatedBox(
-                            quarterTurns: 1,
-                            child: AnimatedContainer(
-                                duration: Duration(milliseconds: 500),
-                                width: x == selected ? itemWidth : notSelectedItemWidth,
-                                height: x == selected ? selectedItemHeight : itemWidth,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                boxShadow: [
+                      child: ListWheelScrollView(
+                      magnification: 2.0,
+                      perspective: 0.002,
+                      onSelectedItemChanged: (x) {
+                        setState(() {
+                          selected = x;
+                        });
+                        print(selected);
+                      },
+                      controller: _scrollController,
+                      physics: FixedExtentScrollPhysics(),
+                      children: List.generate(
+                          titles.length,
+                          (x) => RotatedBox(
+                              quarterTurns: 1,
+                              child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 500),
+                                  width: x == selected ? itemWidth : notSelectedItemWidth,
+                                  height: x == selected ? selectedItemHeight : itemWidth,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                  boxShadow: [
+                                        
+                                  BoxShadow(
+                                  color: Colors.black
+                                     .withOpacity(0.32),
+                                  spreadRadius: 3,
+                                  blurRadius:
+                                      x == selected ? 6 : 10,
+                                      offset: x == selected
+                                          ? Offset(0, 4)
+                                          : Offset(0,
+                                                  2) // changes position of shadow
+                                  )],
+                                                
+                                  gradient: LinearGradient(
+                                  colors: [
+                                      x == selected
+                                          ? trackGradient1
+                                          : trackGradient1
+                                          .withOpacity(0.7),
+                                      x == selected
+                                          ? trackGradient3
+                                          : trackGradient3
+                                          .withOpacity(0.7),
+                                      ],
+                                      begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(
+                                                  x == selected ? 35 : 30)),
+                                          shape: BoxShape.rectangle),
+                                      child: AnimatedContainer(
+                                        duration: Duration(milliseconds: 350),
+                                        margin: EdgeInsets.only(
+                                            top: x == selected ? 60.0 : 60,
+                                            left: x == selected ? 30.0 : 30),
+                                        constraints: new BoxConstraints.expand(),
+                                        child: new Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                          new Text(playlists[x],
+                                          style: TextStyle(
+                                                  
+                                                  color: x == selected
+                                                      ? Colors.white
+                                                      : Colors.white
+                                                      .withOpacity(0.4),
+                                                  
+                                                  fontSize: playlists[x].length <
+                                                              14 &&  x == selected ? 20
+        
+                                                            : x == selected &&  playlists[x].length >= 15 ? 20
+
+                                                            : x != selected && playlists[x].length < 15 ? 20 : 14
+                                                                          )
+                                                        ),
+                                            new Text(authors[x],
+                                                style: TextStyle(
+                                                    color: x == selected
+                                                        ? Colors.white
+                                                            .withOpacity(0.8)
+                                                        : Colors.white
+                                                            .withOpacity(0.3),
+                                                    fontSize:
+                                                        x == selected ? 12 : 12)),
+                                            new AnimatedContainer(
+                                                duration:
+                                                    Duration(milliseconds: 350),
+                                                color: x == selected
+                                                    ? Color(0xFF00C6FF)
+                                                    : Color(0xFF00C6FF)
+                                                        .withOpacity(0.5),
+                                                width: x == selected ? 22.0 : 18,
+                                                height: 2.0,
+                                                margin:
+                                                    const EdgeInsets.only(
+                                                        top: 7.0)),
+                                            new Container(
+                                                height: x == selected ? 10 : 40),
+                                            new Row(
+                                              children: <Widget>[
+                                                Column(
+                                                  children: [
+                                                    new AnimatedDefaultTextStyle(
+                                                      duration:
+                                                          Duration(milliseconds: 350),
+                                                      style: TextStyle(
+                                                          color: x == selected
+                                                              ? Colors.white
+                                                                  .withOpacity(0.8)
+                                                              : Colors.white
+                                                                  .withOpacity(0),
+                                                          fontSize:
+                                                              x == selected ? 13 : 0),
+                                                      child: new Text(
+                                                        trackamount[x] + " tracks",
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                               
+                                                ]),
                                       
-                                BoxShadow(
-                                color: Colors.black
-                                   .withOpacity(0.32),
-                                spreadRadius: 3,
-                                blurRadius:
-                                    x == selected ? 6 : 10,
-                                    offset: x == selected
-                                        ? Offset(0, 4)
-                                        : Offset(0,
-                                                2) // changes position of shadow
-                                )],
-                                              
-                                gradient: LinearGradient(
-                                colors: [
-                                    x == selected
-                                        ? trackGradient1
-                                        : trackGradient1
-                                        .withOpacity(0.7),
-                                    x == selected
-                                        ? trackGradient3
-                                        : trackGradient3
-                                        .withOpacity(0.7),
-                                    ]),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(18)
+                                      
+                                              ]),
+                                    ),
                                   ),
-                                ),
-                              )
-                            ),
-                          itemExtent: itemWidth, 
+                                )
+                              ),
+                            itemExtent: itemWidth, 
+                          ),
                         )
-                      )
-                    ),
-          
+                      ),
+                
           
           
           
